@@ -82,10 +82,10 @@ public class StepDefinitions extends Configuracion {
 
             case "supermercado los montes":
                 assertionLosMontes();
+                break;
 
             case "Your Store":
                 assertionYourStore();
-
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -123,6 +123,7 @@ public class StepDefinitions extends Configuracion {
 
             case "supermercado los montes":
                 clickIncioLosMontes();
+                break;
 
             case "Your Store":
                 clickInicioYourStore();
@@ -185,6 +186,7 @@ public class StepDefinitions extends Configuracion {
 
             case "supermercado los montes":
                 inicioLosMontes();
+                break;
 
             case "Your Store":
                 inicioYourStore();
