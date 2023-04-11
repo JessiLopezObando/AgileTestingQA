@@ -7,7 +7,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import static com.sofkau.ui.PaginaInicioColanta.BOTON_MI_PERFIL;
 import static com.sofkau.ui.PaginaInicioColanta.QUITAR_OPCION;
 
-public class NavegarAlInicioSesionColanta  implements Task {
+public class NavegarAlInicioSesionColanta implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(

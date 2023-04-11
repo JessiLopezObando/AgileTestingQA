@@ -8,17 +8,20 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
+import static com.sofkau.questions.MensajeColanta.mensajeColanta;
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
 import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
 
+import static com.sofkau.tasks.IniciarSesionColanta.iniciarSesionColanta;
 import static com.sofkau.tasks.IniciarSesionLosMontes.iniciarSesionLosMontes;
 import static com.sofkau.tasks.NavegaAlInicioSesionLosMontes.navegaAlInicioSesionLosMontes;
 
 import static com.sofkau.tasks.IniciarSesionYourStore.iniciarSesionYourStore;
 
 import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
+import static com.sofkau.tasks.NavegarAlInicioSesionColanta.navegarAlInicioSesionColanta;
 import static com.sofkau.tasks.NavegarInicioYourStore.navegarInicioYourStore;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -82,11 +85,15 @@ public class StepDefinitions extends Configuracion {
 
             case "supermercado los montes":
                 assertionLosMontes();
+                break;
 
             case "Your Store":
                 assertionYourStore();
-
                 break;
+            case "pideColanta":
+                assertionColanta();
+                break;
+
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -103,6 +110,11 @@ public class StepDefinitions extends Configuracion {
     private static void assertionYourStore() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeInicioYourStore(), equalTo("My Account"))
+        );
+    }
+    private static void assertionColanta() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeColanta(), equalTo("Mi Perfil"))
         );
     }
 
@@ -123,11 +135,13 @@ public class StepDefinitions extends Configuracion {
 
             case "supermercado los montes":
                 clickIncioLosMontes();
+                break;
 
             case "Your Store":
                 clickInicioYourStore();
-
-
+                break;
+            case "pideColanta":
+                clickInicioColanta();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -148,6 +162,12 @@ public class StepDefinitions extends Configuracion {
                 navegarInicioYourStore()
         );
     }
+    private static void clickInicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                navegarAlInicioSesionColanta()
+        );
+    }
+
 
 
 
@@ -171,6 +191,13 @@ public class StepDefinitions extends Configuracion {
                         .yConLaContrasenna("72qMXaw5rK29sB")
         );
     }
+    private static void inicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionColanta()
+                        .conElEmail("rominamene2023@gmail.com")
+                        .yConLaContrasenna("Lupita01")
+        );
+    }
 
 
 
@@ -185,10 +212,14 @@ public class StepDefinitions extends Configuracion {
 
             case "supermercado los montes":
                 inicioLosMontes();
+                break;
 
             case "Your Store":
                 inicioYourStore();
 
+                break;
+            case "pideColanta":
+                inicioColanta();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
