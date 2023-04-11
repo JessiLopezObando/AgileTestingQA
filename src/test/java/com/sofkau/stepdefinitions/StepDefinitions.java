@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
+import static com.sofkau.questions.MensajeColanta.mensajeColanta;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
 import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
@@ -69,6 +70,10 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 assertionAutomation();
                 break;
+            case "pideColanta":
+                assertionColanta();
+                break;
+
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -78,6 +83,11 @@ public class StepDefinitions extends Configuracion {
     private static void assertionAutomation() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeNombre(), equalTo("Logged in as Jessica"))
+        );
+    }
+    private static void assertionColanta() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeColanta(), equalTo("HOLA, ROMINA"))
         );
     }
 
@@ -104,6 +114,7 @@ public class StepDefinitions extends Configuracion {
                 navegarAlRegistro()
         );
     }
+
 
     //Metodo que contiene las credenciales de Automation
     private static void inicioAutomation() {
