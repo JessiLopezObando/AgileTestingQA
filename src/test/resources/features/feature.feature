@@ -11,6 +11,7 @@ Feature: Iniciar sesión
     Then el usuario debera ver un texto que lo confirme en la <pagina>
 
     Examples:
+<<<<<<< HEAD
 
       | url                                                        | pagina                    |
       | "https://automationexercise.com/"                          | "automation exercise"     |
@@ -18,6 +19,13 @@ Feature: Iniciar sesión
       | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"              |
       | "https://www.pidecolanta.com/"                             | "pideColanta"             |
 
+=======
+      | url                                                        | pagina                    |
+      | "https://automationexercise.com/"                          | "automation exercise"     |
+      | "https://www.exito.com/"                                   | "pagina exito"            |
+      | "https://www.superlosmontes.com/"                          | "supermercado los montes" |
+      | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"              |
+>>>>>>> a8e08a0b4f60ac55fc3052d944345f7c8f7a7c1b
 
 
 
