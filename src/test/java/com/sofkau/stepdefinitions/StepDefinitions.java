@@ -1,6 +1,7 @@
 package com.sofkau.stepdefinitions;
 
 import com.sofkau.setup.Configuracion;
+import com.sofkau.tasks.NavegaAlInicioSesionLosMontes;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,7 +9,10 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
+import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
 import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
+import static com.sofkau.tasks.IniciarSesionLosMontes.iniciarSesionLosMontes;
+import static com.sofkau.tasks.NavegaAlInicioSesionLosMontes.navegaAlInicioSesionLosMontes;
 import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -69,6 +73,9 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 assertionAutomation();
                 break;
+            case "supermercado los montes":
+                assertionLosMontes();
+                break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -81,6 +88,8 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+
+
     /**
      *
      * Métodos Automation
@@ -90,6 +99,9 @@ public class StepDefinitions extends Configuracion {
         switch (pagina){
             case "automation exercise":
                 clickInicioAutomation();
+                break;
+            case "supermercado los montes":
+                clickIncioLosMontes();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -111,19 +123,44 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+
+
     private static void completarCredenciales(String pagina) {
         switch (pagina){
             case "automation exercise":
                 inicioAutomation();
                 break;
-
+            case "supermercado los montes":
+                inicioLosMontes();
+                break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
         }
     }
 
+    /**
+     *
+     * Métodos Supermercado Los Montes
+     */
 
 
+    private static void clickIncioLosMontes() {
+        theActorInTheSpotlight().attemptsTo(
+                navegaAlInicioSesionLosMontes()
+        );
+    }
 
+    private static void inicioLosMontes() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionLosMontes()
+                        .conElEmail("juanmanuelgofu@gmail.com")
+                        .yConLaContrasenna("Juan1997")
+        );
+    }
+    private static void assertionLosMontes() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeNombreLosMontes(), equalTo("Juan Manuel Gomez Fuentes"))
+        );
+    }
 }
