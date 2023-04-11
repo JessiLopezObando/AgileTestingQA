@@ -8,8 +8,11 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
+import static com.sofkau.questions.MensajeNombreExito.mensajeBienvenidaExito;
 import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
 import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
+import static com.sofkau.tasks.NavegarAlInicioSesionExito.navegarAlRegistroPaginaExito;
+import static com.sofkau.tasks.PaginaInicioSesionExitoTasks.iniciarSesionExito;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -69,6 +72,9 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 assertionAutomation();
                 break;
+            case "pagina exito":
+                assertionExito();
+                break;
 
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -82,29 +88,45 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void assertionExito() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeBienvenidaExito(), equalTo("Hola"))
+        );
+    }
+
     /**
      *
-     * Métodos Automation
+     * Métodos
      */
 
+    //When Navega hasta la opcion de iniciar sesion - General
     private static void navegarHastaInicio(String pagina) {
         switch (pagina){
             case "automation exercise":
                 clickInicioAutomation();
                 break;
             case "pagina exito":
+                clickInicioSesionExito();
+                break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
         }
     }
 
+    //Método iniciar Sesion Automation
     private static void clickInicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
                 navegarAlRegistro()
         );
     }
+    private static void clickInicioSesionExito() {
+        theActorInTheSpotlight().attemptsTo(
+                navegarAlRegistroPaginaExito()
+        );
+    }
 
+    //Metodo que contiene las credenciales de Automation
     private static void inicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
                 iniciarSesion()
@@ -113,10 +135,24 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void registroUsuarioExito() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionExito()
+                        .conUsuario("ospina_88@hotmail.com")
+                        .conPassword("Emilia#2019")
+        );
+    }
+
+
+
+    //When - completa credenciales para iniciar sesion - General
     private static void completarCredenciales(String pagina) {
         switch (pagina){
             case "automation exercise":
                 inicioAutomation();
+                break;
+            case "pagina exito":
+                registroUsuarioExito();
                 break;
 
             default:

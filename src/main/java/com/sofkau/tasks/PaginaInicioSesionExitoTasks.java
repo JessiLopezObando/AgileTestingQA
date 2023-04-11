@@ -20,8 +20,6 @@ public class PaginaInicioSesionExitoTasks implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(BOTON_CUENTA),
-                Click.on(INGRESAR_CON_EMAIL_Y_CONTRASENIA),
                 Enter.theValue(usuario).into(CAMPO_EMAIL),
                 Enter.theValue(password).into(CAMPO_CONTRASENIAA),
                 Click.on(BOTON_PARA_ENTRAR)

@@ -12,7 +12,7 @@ public class PaginaInicioSesionExito extends PageObject {
 
     public static final Target INGRESAR_CON_EMAIL_Y_CONTRASENIA = Target.
             the("Boton ingresar con email y contrasenna")
-            .located(By.xpath("//span[contains(text(), 'Ingresa con email y contraseña')]"));
+            .located(By.xpath("//div[contains(@class,'vtex-login-2-x-button vtex-login-2-x-emailPasswordOptionBtn')]//button[contains(@type,'button')]"));
 
     public static final Target CAMPO_EMAIL = Target.
             the("Campo del email")
