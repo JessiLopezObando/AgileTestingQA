@@ -69,6 +69,7 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 assertionAutomation();
                 break;
+
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -91,6 +92,7 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 clickInicioAutomation();
                 break;
+            case "pagina exito":
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
