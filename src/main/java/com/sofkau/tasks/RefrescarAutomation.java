@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 public class RefrescarAutomation implements Task {
     public RefrescarAutomation() { }
 
-    public static Refrescar thePage() {
-        return Tasks.instrumented(Refrescar.class);
+    public static RefrescarAutomation thePage() {
+        return Tasks.instrumented(RefrescarAutomation.class);
     }
     @Override
     @Step("{0} refreshes the browser")
