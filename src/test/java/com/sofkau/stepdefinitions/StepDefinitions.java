@@ -95,9 +95,12 @@ public class StepDefinitions extends Configuracion {
 
 
     /**
-     * Métodos Automation
+     *
+     *
+     * Métodos
      */
 
+    //When Navega hasta la opcion de iniciar sesion - General
     private static void navegarHastaInicio(String pagina) {
         switch (pagina) {
             case "automation exercise":
@@ -113,11 +116,13 @@ public class StepDefinitions extends Configuracion {
         }
     }
 
+    //Método iniciar Sesion Automation
     private static void clickInicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
                 navegarAlRegistro()
         );
     }
+
 
     private static void clickInicioYourStore() {
         theActorInTheSpotlight().attemptsTo(
@@ -125,6 +130,9 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+
+
+    //Metodo que contiene las credenciales de Automation
 
     private static void inicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
@@ -135,6 +143,7 @@ public class StepDefinitions extends Configuracion {
     }
 
 
+
     private static void inicioYourStore() {
         theActorInTheSpotlight().attemptsTo(
                 iniciarSesionYourStore()
@@ -143,6 +152,9 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+
+
+    //When - completa credencial para iniciar sesion - General
 
     private static void completarCredenciales(String pagina) {
         switch (pagina) {
