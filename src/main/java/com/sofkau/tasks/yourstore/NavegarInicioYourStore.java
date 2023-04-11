@@ -1,12 +1,11 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.yourstore;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
-import static com.sofkau.ui.PaginaInicioAutomation.BOTON_REGISTRO;
-import static com.sofkau.ui.PaginaInicioSesionYourStore.BOTON_ICON_MYACCOUNT;
-import static com.sofkau.ui.PaginaInicioSesionYourStore.BOTON_LOGIN;
+import static com.sofkau.ui.yourstore.PaginaInicioSesionYourStore.BOTON_ICON_MYACCOUNT;
+import static com.sofkau.ui.yourstore.PaginaInicioSesionYourStore.BOTON_LOGIN;
 
 public class NavegarInicioYourStore implements Task {
 

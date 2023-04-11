@@ -1,10 +1,10 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.automation;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
-import static com.sofkau.ui.CompraAutomation.BOTON_PRODUCTOS;
+import static com.sofkau.ui.automation.CompraAutomation.BOTON_PRODUCTOS;
 
 public class NavegarALosProductosAutomation implements Task {
     @Override

@@ -1,7 +1,6 @@
 package com.sofkau.stepdefinitions;
 
 import com.sofkau.setup.Configuracion;
-import com.sofkau.tasks.NavegaAlInicioSesionLosMontes;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,15 +10,15 @@ import org.junit.jupiter.api.Assertions;
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
-import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
+import static com.sofkau.tasks.automation.IniciarSesionAutomation.iniciarSesion;
 
-import static com.sofkau.tasks.IniciarSesionLosMontes.iniciarSesionLosMontes;
-import static com.sofkau.tasks.NavegaAlInicioSesionLosMontes.navegaAlInicioSesionLosMontes;
+import static com.sofkau.tasks.losmontes.IniciarSesionLosMontes.iniciarSesionLosMontes;
+import static com.sofkau.tasks.losmontes.NavegaAlInicioSesionLosMontes.navegaAlInicioSesionLosMontes;
 
-import static com.sofkau.tasks.IniciarSesionYourStore.iniciarSesionYourStore;
+import static com.sofkau.tasks.yourstore.IniciarSesionYourStore.iniciarSesionYourStore;
 
-import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
-import static com.sofkau.tasks.NavegarInicioYourStore.navegarInicioYourStore;
+import static com.sofkau.tasks.automation.NavegarAlInicioSesionAutomation.navegarAlRegistro;
+import static com.sofkau.tasks.yourstore.NavegarInicioYourStore.navegarInicioYourStore;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -136,7 +135,7 @@ public class StepDefinitions extends Configuracion {
         }
     }
 
-    //Método iniciar Sesion Automation
+    //Método iniciar Sesion automation
     private static void clickInicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
                 navegarAlRegistro()
@@ -152,7 +151,7 @@ public class StepDefinitions extends Configuracion {
 
 
 
-    //Metodo que contiene las credenciales de Automation
+    //Metodo que contiene las credenciales de automation
 
     private static void inicioAutomation() {
         theActorInTheSpotlight().attemptsTo(

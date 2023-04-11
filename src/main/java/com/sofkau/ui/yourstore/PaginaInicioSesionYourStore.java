@@ -1,4 +1,4 @@
-package com.sofkau.ui;
+package com.sofkau.ui.yourstore;
 
 
 import net.serenitybdd.screenplay.targets.Target;
