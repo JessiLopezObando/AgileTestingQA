@@ -11,8 +11,9 @@ Feature: Iniciar sesión
     Then el usuario debera ver un texto que lo confirme en la <pagina>
 
     Examples:
-      | url                               | pagina                |
-      | "https://automationexercise.com/" | "automation exercise" |
+      | url                                                        | pagina                |
+      | "https://automationexercise.com/"                          | "automation exercise" |
+      | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"          |
 
 
 
