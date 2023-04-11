@@ -4,7 +4,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
-import static com.sofkau.ui.PaginaInicioAutomation.BOTON_REGISTRO;
 import static com.sofkau.ui.PaginaInicioSesionExito.BOTON_CUENTA;
 import static com.sofkau.ui.PaginaInicioSesionExito.INGRESAR_CON_EMAIL_Y_CONTRASENIA;
 
