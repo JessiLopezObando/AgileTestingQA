@@ -1,11 +1,11 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.automation;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-import static com.sofkau.ui.PaginaInicioAutomation.*;
+import static com.sofkau.ui.automation.PaginaInicioAutomation.*;
 
 public class IniciarSesionAutomation implements Task {
 

@@ -1,7 +1,7 @@
 Feature: Iniciar sesión
-  yo
-  quiero
-  para
+  Yo como usuario
+  Quiero iniciar sesión en mi cuenta
+  Para acceder a mis datos y funcionalidades
 
   @InicioSesión
   Scenario Outline: Iniciar sesion
@@ -11,7 +11,9 @@ Feature: Iniciar sesión
     Then el usuario debera ver un texto que lo confirme en la <pagina>
 
     Examples:
-      | url                               | pagina                |
-      | "https://automationexercise.com/" | "automation exercise" |
-      | "https://vaquitaexpress.com.co/"  | "la vaquita"          |
-    
+      | url                                                        | pagina                    |
+      | "https://automationexercise.com/"                          | "automation exercise"     |
+      | "https://vaquitaexpress.com.co/"                           | "la vaquita"              |
+      | "https://www.exito.com/"                                   | "pagina exito"            |
+      | "https://www.superlosmontes.com/"                          | "supermercado los montes" |
+      | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"              |
