@@ -114,7 +114,7 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
-    //When - completa credenciales para iniciar sesion - General
+    //When - completa credencial para iniciar sesion - General
     private static void completarCredenciales(String pagina) {
         switch (pagina){
             case "automation exercise":
