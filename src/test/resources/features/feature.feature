@@ -14,6 +14,6 @@ Feature: Iniciar sesión
       | url                                                        | pagina                |
       | "https://automationexercise.com/"                          | "automation exercise" |
       | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"          |
-
+      | "https://www.latamairlines.com/co/es"                      | "LATAM"      |
 
 

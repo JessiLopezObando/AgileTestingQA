@@ -7,11 +7,14 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
+import static com.sofkau.questions.MensajeInicioLatam.mensajeInicioLatam;
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
+import static com.sofkau.tasks.IniciarSesionLatam.iniciarSesionLatam;
 import static com.sofkau.tasks.IniciarSesionYourStore.iniciarSesionYourStore;
 import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
+import static com.sofkau.tasks.NavegarInicioLatam.navegarInicioLatam;
 import static com.sofkau.tasks.NavegarInicioYourStore.navegarInicioYourStore;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -75,6 +78,9 @@ public class StepDefinitions extends Configuracion {
             case "Your Store":
                 assertionYourStore();
                 break;
+            case "LATAM":
+                assertionLatam();
+                break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -93,10 +99,13 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void assertionLatam() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeInicioLatam(), equalTo("Nelson"))
+        );
+    }
 
     /**
-     *
-     *
      * Métodos
      */
 
@@ -108,7 +117,9 @@ public class StepDefinitions extends Configuracion {
                 break;
             case "Your Store":
                 clickInicioYourStore();
-
+                break;
+            case "LATAM":
+                clickInicioLatam();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -130,6 +141,11 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void clickInicioLatam() {
+        theActorInTheSpotlight().attemptsTo(
+                navegarInicioLatam()
+        );
+    }
 
 
     //Metodo que contiene las credenciales de Automation
@@ -143,7 +159,6 @@ public class StepDefinitions extends Configuracion {
     }
 
 
-
     private static void inicioYourStore() {
         theActorInTheSpotlight().attemptsTo(
                 iniciarSesionYourStore()
@@ -152,6 +167,13 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void inicioLatam() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionLatam()
+                        .conElUsuario("nelsonvelazquezqaexito@outlook.es")
+                        .yConLaContrasenna("S41ch1p4p4")
+        );
+    }
 
 
     //When - completa credencial para iniciar sesion - General
@@ -163,6 +185,9 @@ public class StepDefinitions extends Configuracion {
                 break;
             case "Your Store":
                 inicioYourStore();
+                break;
+            case "LATAM":
+                inicioLatam();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
