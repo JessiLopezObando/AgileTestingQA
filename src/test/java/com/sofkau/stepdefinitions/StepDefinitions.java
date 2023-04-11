@@ -8,14 +8,16 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
+import static com.sofkau.questions.MensajeNombreLaVaquita.mensajeNombreLaVaquita;
 import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
+import static com.sofkau.tasks.IniciarSesionLaVaquita.iniciarSesionLaVaquita;
 import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
+import static com.sofkau.tasks.NavegarAlInicioSesionLaVaquita.navegarAlInicioSesionLaVaquita;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class StepDefinitions extends Configuracion {
-
 
     public static Logger LOGGER= Logger.getLogger(StepDefinitions.class);
 
@@ -47,7 +49,6 @@ public class StepDefinitions extends Configuracion {
             Assertions.fail(exception.getMessage(), exception);
             LOGGER.warn(exception.getMessage(), exception);
         }
-
     }
 
 
@@ -61,13 +62,15 @@ public class StepDefinitions extends Configuracion {
             Assertions.fail(exception.getMessage(), exception);
             LOGGER.warn(exception.getMessage(), exception);
         }
-
     }
 
     private static void asserstions(String pagina) {
         switch (pagina){
             case "automation exercise":
                 assertionAutomation();
+                break;
+            case "la vaquita":
+                assertionLaVaquita();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -81,6 +84,11 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void assertionLaVaquita() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeNombreLaVaquita(), equalTo("Hola, Maria"))
+        );
+    }
     /**
      *
      * Métodos Automation
@@ -90,6 +98,9 @@ public class StepDefinitions extends Configuracion {
         switch (pagina){
             case "automation exercise":
                 clickInicioAutomation();
+                break;
+            case "la vaquita":
+                clickInicioLaVaquita();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -103,11 +114,25 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void clickInicioLaVaquita() {
+        theActorInTheSpotlight().attemptsTo(
+                navegarAlInicioSesionLaVaquita()
+        );
+    }
+
     private static void inicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
                 iniciarSesion()
                         .conElUsuario("jessica@gmail.com")
                         .yConLaContrasenna("123456")
+        );
+    }
+
+    private static void inicioLaVaquita() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionLaVaquita()
+                        .conElUsuario("mariaisabelgiraldorendon357@gmail.com")
+                        .yConLaContrasenna("MariaGiraldo_123")
         );
     }
 
@@ -117,13 +142,12 @@ public class StepDefinitions extends Configuracion {
                 inicioAutomation();
                 break;
 
+            case "la vaquita":
+                inicioLaVaquita();
+                break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
         }
     }
-
-
-
-
 }

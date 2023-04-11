@@ -13,6 +13,4 @@ Feature: Iniciar sesión
     Examples:
       | url                               | pagina                |
       | "https://automationexercise.com/" | "automation exercise" |
-
-
-
+      | "https://vaquitaexpress.com.co/"  | "la vaquita"          |
