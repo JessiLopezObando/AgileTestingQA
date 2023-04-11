@@ -1,7 +1,7 @@
 Feature: Iniciar sesión
-  yo
-  quiero
-  para
+  Yo como usuario
+  Quiero iniciar sesión en mi cuenta
+  Para acceder a mis datos y funcionalidades
 
   @InicioSesión
   Scenario Outline: Iniciar sesion
