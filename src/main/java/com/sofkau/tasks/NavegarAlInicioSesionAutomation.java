@@ -9,6 +9,7 @@ import static com.sofkau.ui.PaginaInicioAutomation.BOTON_REGISTRO;
 public class NavegarAlInicioSesionAutomation implements Task {
 
 
+
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
