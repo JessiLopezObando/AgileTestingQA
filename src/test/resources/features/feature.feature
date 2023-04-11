@@ -13,6 +13,7 @@ Feature: Iniciar sesión
     Examples:
       | url                               | pagina                |
       | "https://automationexercise.com/" | "automation exercise" |
+      | "https://www.pidecolanta.com/"    | "pideColanta"         |
 
 
 

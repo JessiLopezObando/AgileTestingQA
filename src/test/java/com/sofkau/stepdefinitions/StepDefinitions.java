@@ -7,9 +7,12 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
+import static com.sofkau.questions.MensajeColanta.mensajeColanta;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
+import static com.sofkau.tasks.IniciarSesionColanta.iniciarSesionColanta;
 import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
+import static com.sofkau.tasks.NavegarAlInicioSesionColanta.navegarAlInicioSesionColanta;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -69,6 +72,9 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 assertionAutomation();
                 break;
+            case "pideColanta":
+                assertionColanta();
+                break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -78,6 +84,11 @@ public class StepDefinitions extends Configuracion {
     private static void assertionAutomation() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeNombre(), equalTo("Logged in as Jessica"))
+        );
+    }
+    private static void assertionColanta() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeColanta(), equalTo("HOLA, ROMINA"))
         );
     }
 
@@ -90,6 +101,8 @@ public class StepDefinitions extends Configuracion {
         switch (pagina){
             case "automation exercise":
                 clickInicioAutomation();
+            case "pideColanta":
+                clickInicioColanta();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -102,6 +115,11 @@ public class StepDefinitions extends Configuracion {
                 navegarAlRegistro()
         );
     }
+    private static void clickInicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                navegarAlInicioSesionColanta()
+        );
+    }
 
     private static void inicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
@@ -110,11 +128,21 @@ public class StepDefinitions extends Configuracion {
                         .yConLaContrasenna("123456")
         );
     }
+    private static void inicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionColanta()
+                        .conElEmail("rominamene2023@gmail.com")
+                        .yConLaContrasenna("Lupita01")
+        );
+    }
 
     private static void completarCredenciales(String pagina) {
         switch (pagina){
             case "automation exercise":
                 inicioAutomation();
+                break;
+            case "pideColanta":
+                inicioColanta();
                 break;
 
             default:
