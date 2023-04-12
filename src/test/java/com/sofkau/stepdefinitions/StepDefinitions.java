@@ -7,28 +7,21 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 
-import static com.sofkau.questions.MensajeColanta.mensajeColanta;
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 import static com.sofkau.questions.MensajeNombreExito.mensajeBienvenidaExito;
 import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
-import static com.sofkau.tasks.IniciarSesionAutomation.iniciarSesion;
+import static com.sofkau.tasks.automation.IniciarSesionAutomation.iniciarSesion;
 
+import static com.sofkau.tasks.losmontes.IniciarSesionLosMontes.iniciarSesionLosMontes;
+import static com.sofkau.tasks.losmontes.NavegaAlInicioSesionLosMontes.navegaAlInicioSesionLosMontes;
 
-import static com.sofkau.tasks.IniciarSesionColanta.iniciarSesionColanta;
+import static com.sofkau.tasks.yourstore.IniciarSesionYourStore.iniciarSesionYourStore;
 
-
-import static com.sofkau.tasks.IniciarSesionLosMontes.iniciarSesionLosMontes;
-import static com.sofkau.tasks.NavegaAlInicioSesionLosMontes.navegaAlInicioSesionLosMontes;
-import static com.sofkau.tasks.IniciarSesionYourStore.iniciarSesionYourStore;
-import static com.sofkau.tasks.NavegarAlInicioSesionAutomation.navegarAlRegistro;
-
-import static com.sofkau.tasks.NavegarAlInicioSesionColanta.navegarAlInicioSesionColanta;
-
+import static com.sofkau.tasks.automation.NavegarAlInicioSesionAutomation.navegarAlRegistro;
+import static com.sofkau.tasks.yourstore.NavegarInicioYourStore.navegarInicioYourStore;
 import static com.sofkau.tasks.NavegarAlInicioSesionExito.navegarAlRegistroPaginaExito;
 import static com.sofkau.tasks.PaginaInicioSesionExitoTasks.iniciarSesionExito;
-
-import static com.sofkau.tasks.NavegarInicioYourStore.navegarInicioYourStore;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -98,10 +91,6 @@ public class StepDefinitions extends Configuracion {
             case "Your Store":
                 assertionYourStore();
                 break;
-            case "pideColanta":
-                assertionColanta();
-                break;
-
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -124,11 +113,6 @@ public class StepDefinitions extends Configuracion {
     private static void assertionYourStore() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeInicioYourStore(), equalTo("My Account"))
-        );
-    }
-    private static void assertionColanta() {
-        theActorInTheSpotlight().should(
-                seeThat(mensajeColanta(), equalTo("Mi Perfil"))
         );
     }
 
@@ -154,9 +138,8 @@ public class StepDefinitions extends Configuracion {
 
             case "Your Store":
                 clickInicioYourStore();
-                break;
-            case "pideColanta":
-                clickInicioColanta();
+
+
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -164,7 +147,7 @@ public class StepDefinitions extends Configuracion {
         }
     }
 
-    //Método iniciar Sesion Automation
+    //Método iniciar Sesion automation
     private static void clickInicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
                 navegarAlRegistro()
@@ -182,16 +165,10 @@ public class StepDefinitions extends Configuracion {
                 navegarInicioYourStore()
         );
     }
-    private static void clickInicioColanta() {
-        theActorInTheSpotlight().attemptsTo(
-                navegarAlInicioSesionColanta()
-        );
-    }
 
 
 
-
-    //Metodo que contiene las credenciales de Automation
+    //Metodo que contiene las credenciales de automation
 
     private static void inicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
@@ -219,13 +196,6 @@ public class StepDefinitions extends Configuracion {
 
         );
     }
-    private static void inicioColanta() {
-        theActorInTheSpotlight().attemptsTo(
-                iniciarSesionColanta()
-                        .conElEmail("rominamene2023@gmail.com")
-                        .yConLaContrasenna("Lupita01")
-        );
-    }
 
 
 
@@ -247,9 +217,6 @@ public class StepDefinitions extends Configuracion {
             case "Your Store":
                 inicioYourStore();
 
-                break;
-            case "pideColanta":
-                inicioColanta();
                 break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");

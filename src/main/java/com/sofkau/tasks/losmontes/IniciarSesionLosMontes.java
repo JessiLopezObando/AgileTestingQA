@@ -1,15 +1,11 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.losmontes;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
-import static com.sofkau.ui.PaginaIncioLosMontes.*;
+import static com.sofkau.ui.losmontes.PaginaIncioLosMontes.*;
 
 
 public class IniciarSesionLosMontes implements Task {

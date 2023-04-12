@@ -1,11 +1,11 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.yourstore;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-import static com.sofkau.ui.PaginaInicioSesionYourStore.*;
+import static com.sofkau.ui.yourstore.PaginaInicioSesionYourStore.*;
 
 public class IniciarSesionYourStore implements Task {
 
