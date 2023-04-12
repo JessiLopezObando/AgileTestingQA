@@ -1,23 +1,23 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.lavaquita;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 
-import static com.sofkau.ui.PaginaInicioAutomation.*;
+import static com.sofkau.ui.lavaquita.PaginaInicioLaVaquita.*;
 
-public class IniciarSesionAutomation implements Task {
+public class IniciarSesionLaVaquita implements Task {
 
     private String usuario;
     private String contrasenna;
 
-    public IniciarSesionAutomation conElUsuario(String usuario){
+    public IniciarSesionLaVaquita conElUsuario(String usuario){
         this.usuario=usuario;
         return this;
     }
 
-    public IniciarSesionAutomation yConLaContrasenna(String contrasenna){
+    public IniciarSesionLaVaquita yConLaContrasenna(String contrasenna){
         this.contrasenna=contrasenna;
         return this;
     }
@@ -31,7 +31,7 @@ public class IniciarSesionAutomation implements Task {
         );
     }
 
-    public static IniciarSesionAutomation iniciarSesion(){
-        return new IniciarSesionAutomation();
+    public static IniciarSesionLaVaquita iniciarSesionLaVaquita(){
+        return new IniciarSesionLaVaquita();
     }
 }

@@ -18,6 +18,6 @@ Feature: Iniciar sesión
       | "https://www.latamairlines.com/co/es"                      | "LATAM"                   |
       | "https://www.exito.com/"                                   | "pagina exito"            |
       | "https://www.superlosmontes.com/"                          | "supermercado los montes" |
-
-
+      | "https://vaquitaexpress.com.co/"                           | "la vaquita"              |
+      | "https://www.pidecolanta.com/"                             | "pideColanta"             |
 
