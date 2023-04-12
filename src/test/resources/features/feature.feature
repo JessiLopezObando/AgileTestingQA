@@ -14,14 +14,8 @@ Feature: Iniciar sesión
 
       | url                                                        | pagina                    |
       | "https://automationexercise.com/"                          | "automation exercise"     |
-      | "https://www.pidecolanta.com/"                             | "pideColanta"             |
+      | "https://vaquitaexpress.com.co/"                           | "la vaquita"              |
       | "https://www.exito.com/"                                   | "pagina exito"            |
       | "https://www.superlosmontes.com/"                          | "supermercado los montes" |
       | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"              |
-
-
-
-
-
-
-
+      | "https://www.pidecolanta.com/"                             | "pideColanta"             |
