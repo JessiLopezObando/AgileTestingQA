@@ -3,7 +3,7 @@ package com.sofkau.questions;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-import static com.sofkau.ui.ConfirmacionIncioLosMontes.MENSAJE_LOS_MONTES;
+import static com.sofkau.ui.losmontes.ConfirmacionIncioLosMontes.MENSAJE_LOS_MONTES;
 
 public class MensajeNombreLosMontes implements Question<String> {
     @Override

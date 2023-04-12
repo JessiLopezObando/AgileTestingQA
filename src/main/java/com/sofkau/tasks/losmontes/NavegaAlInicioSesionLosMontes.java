@@ -1,11 +1,11 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.losmontes;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
-import static com.sofkau.ui.PaginaIncioLosMontes.BOTON_INICIAR_SESION;
-import static com.sofkau.ui.PaginaIncioLosMontes.MENSAJE_COOKIES;
+import static com.sofkau.ui.losmontes.PaginaIncioLosMontes.BOTON_INICIAR_SESION;
+import static com.sofkau.ui.losmontes.PaginaIncioLosMontes.MENSAJE_COOKIES;
 
 
 public class NavegaAlInicioSesionLosMontes implements Task {
