@@ -11,12 +11,11 @@ import org.junit.jupiter.api.Assertions;
 import static com.sofkau.questions.MensajeColanta.mensajeColanta;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 
-import static com.sofkau.tasks.IniciarSesionColanta.iniciarSesionColanta;
+import static com.sofkau.tasks.colanta.IniciarSesionColanta.iniciarSesionColanta;
 
-import static com.sofkau.tasks.NavegarAlInicioSesionColanta.navegarAlInicioSesionColanta;
+import static com.sofkau.tasks.colanta.NavegarAlInicioSesionColanta.navegarAlInicioSesionColanta;
 
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
-import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 import static com.sofkau.questions.MensajeNombreExito.mensajeBienvenidaExito;
 import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
 import static com.sofkau.tasks.automation.IniciarSesionAutomation.iniciarSesion;

@@ -1,4 +1,4 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.colanta;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
-import static com.sofkau.ui.PaginaInicioColanta.*;
+import static com.sofkau.ui.colanta.PaginaInicioColanta.*;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isEnabled;
 
 public class IniciarSesionColanta implements Task {

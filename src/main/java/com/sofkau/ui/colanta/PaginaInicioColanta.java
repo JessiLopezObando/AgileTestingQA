@@ -1,4 +1,4 @@
-package com.sofkau.ui;
+package com.sofkau.ui.colanta;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.screenplay.targets.Target;
