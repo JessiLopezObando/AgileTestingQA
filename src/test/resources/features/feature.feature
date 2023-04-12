@@ -14,8 +14,10 @@ Feature: Iniciar sesión
 
       | url                                                        | pagina                    |
       | "https://automationexercise.com/"                          | "automation exercise"     |
-      | "https://vaquitaexpress.com.co/"                           | "la vaquita"              |
+      | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"              |
+      | "https://www.latamairlines.com/co/es"                      | "LATAM"                   |
       | "https://www.exito.com/"                                   | "pagina exito"            |
       | "https://www.superlosmontes.com/"                          | "supermercado los montes" |
-      | "http://opencart.abstracta.us/index.php?route=common/home" | "Your Store"              |
+      | "https://vaquitaexpress.com.co/"                           | "la vaquita"              |
       | "https://www.pidecolanta.com/"                             | "pideColanta"             |
+

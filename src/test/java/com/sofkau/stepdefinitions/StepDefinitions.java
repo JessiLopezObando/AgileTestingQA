@@ -6,9 +6,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+
 import static com.sofkau.questions.MensajeColanta.mensajeColanta;
 
 
+import static com.sofkau.questions.MensajeInicioLatam.mensajeInicioLatam;
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
 
 
@@ -24,6 +26,14 @@ import static com.sofkau.tasks.colanta.NavegarAlInicioSesionColanta.navegarAlIni
 
 import static com.sofkau.questions.MensajeNombreExito.mensajeBienvenidaExito;
 import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
+
+
+import static com.sofkau.tasks.latam.IniciarSesionLatam.iniciarSesionLatam;
+
+import static com.sofkau.tasks.latam.NavegarInicioLatam.navegarInicioLatam;
+
+
+
 import static com.sofkau.tasks.automation.IniciarSesionAutomation.iniciarSesion;
 
 import static com.sofkau.tasks.losmontes.IniciarSesionLosMontes.iniciarSesionLosMontes;
@@ -33,6 +43,7 @@ import static com.sofkau.tasks.yourstore.IniciarSesionYourStore.iniciarSesionYou
 
 import static com.sofkau.tasks.automation.NavegarAlInicioSesionAutomation.navegarAlRegistro;
 import static com.sofkau.tasks.yourstore.NavegarInicioYourStore.navegarInicioYourStore;
+
 import static com.sofkau.tasks.NavegarAlInicioSesionExito.navegarAlRegistroPaginaExito;
 import static com.sofkau.tasks.PaginaInicioSesionExitoTasks.iniciarSesionExito;
 
@@ -113,6 +124,9 @@ public class StepDefinitions extends Configuracion {
             case "Your Store":
                 assertionYourStore();
                 break;
+            case "LATAM":
+                assertionLatam();
+                break;
 
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
@@ -121,10 +135,9 @@ public class StepDefinitions extends Configuracion {
     }
 
     private static void assertionAutomation() {
-        theActorInTheSpotlight().should(
-                seeThat(mensajeNombre(), equalTo("Logged in as Jessica"))
-        );
+        theActorInTheSpotlight().should(seeThat(mensajeNombre(), equalTo("Logged in as Jessica")));
     }
+
     private static void assertionColanta() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeColanta(), equalTo("HOLA, ROMINA"))
@@ -138,23 +151,20 @@ public class StepDefinitions extends Configuracion {
     }
 
     private static void assertionExito() {
-        theActorInTheSpotlight().should(
-                seeThat(mensajeBienvenidaExito(), equalTo("Hola"))
-        );
+        theActorInTheSpotlight().should(seeThat(mensajeBienvenidaExito(), equalTo("Hola")));
     }
 
 
     private static void assertionYourStore() {
-        theActorInTheSpotlight().should(
-                seeThat(mensajeInicioYourStore(), equalTo("My Account"))
-        );
+        theActorInTheSpotlight().should(seeThat(mensajeInicioYourStore(), equalTo("My Account")));
+    }
+
+    private static void assertionLatam() {
+        theActorInTheSpotlight().should(seeThat(mensajeInicioLatam(), equalTo("Nelson")));
     }
 
 
-
     /**
-     *
-     *
      * Métodos
      */
 
@@ -164,8 +174,7 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 clickInicioAutomation();
                 break;
-
-            case "pideColanta":
+                case "pideColanta":
                 clickInicioColanta();
                 break;
 
@@ -176,15 +185,15 @@ public class StepDefinitions extends Configuracion {
             case "pagina exito":
                 clickInicioSesionExito();
                 break;
-
             case "supermercado los montes":
                 clickIncioLosMontes();
                 break;
-
             case "Your Store":
                 clickInicioYourStore();
                 break;
-
+            case "LATAM":
+                clickInicioLatam();
+                break;
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -193,10 +202,9 @@ public class StepDefinitions extends Configuracion {
 
     //Método iniciar Sesion automation
     private static void clickInicioAutomation() {
-        theActorInTheSpotlight().attemptsTo(
-                navegarAlRegistro()
-        );
+        theActorInTheSpotlight().attemptsTo(navegarAlRegistro());
     }
+
 
     private static void clickInicioColanta() {
         theActorInTheSpotlight().attemptsTo(
@@ -204,18 +212,18 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+
     private static void clickInicioSesionExito() {
-        theActorInTheSpotlight().attemptsTo(
-                navegarAlRegistroPaginaExito()
-        );
+        theActorInTheSpotlight().attemptsTo(navegarAlRegistroPaginaExito());
     }
 
     private static void clickInicioYourStore() {
-        theActorInTheSpotlight().attemptsTo(
-                navegarInicioYourStore()
-        );
+        theActorInTheSpotlight().attemptsTo(navegarInicioYourStore());
     }
 
+    private static void clickInicioLatam() {
+        theActorInTheSpotlight().attemptsTo(navegarInicioLatam());
+    }
 
     //Metodo que contiene las credenciales de automation
 
@@ -226,11 +234,7 @@ public class StepDefinitions extends Configuracion {
     }
 
     private static void inicioAutomation() {
-        theActorInTheSpotlight().attemptsTo(
-                iniciarSesion()
-                        .conElUsuario("jessica@gmail.com")
-                        .yConLaContrasenna("123456")
-        );
+        theActorInTheSpotlight().attemptsTo(iniciarSesion().conElUsuario("jessica@gmail.com").yConLaContrasenna("123456"));
     }
 
     private static void inicioColanta() {
@@ -250,20 +254,33 @@ public class StepDefinitions extends Configuracion {
     }
 
     private static void registroUsuarioExito() {
+
+        theActorInTheSpotlight().attemptsTo(iniciarSesionExito().conUsuario("ospina_88@hotmail.com").conPassword("Emilia#2019"));
+
+
         theActorInTheSpotlight().attemptsTo(
                 iniciarSesionExito()
                         .conUsuario("ospina_88@hotmail.com")
                         .conPassword("Emilia#2019")
         );
+
     }
 
+
     private static void inicioYourStore() {
-        theActorInTheSpotlight().attemptsTo(
-                iniciarSesionYourStore()
-                        .conElUsuario("yeisonbuitrago1010@gmail.com")
-                        .yConLaContrasenna("72qMXaw5rK29sB")
+
+        theActorInTheSpotlight().attemptsTo(iniciarSesionYourStore().conElUsuario("yeisonbuitrago1010@gmail.com").yConLaContrasenna("72qMXaw5rK29sB")
+
         );
     }
+
+    private static void inicioLatam() {
+        theActorInTheSpotlight().attemptsTo(iniciarSesionLatam().conElUsuario("nelsonvelazquezqaexito@outlook.es").yConLaContrasenna("S41ch1p4p4"));
+    }
+
+
+
+
 
     //When - completa credenciales para iniciar sesion - General
     private static void completarCredenciales(String pagina) {
@@ -280,16 +297,18 @@ public class StepDefinitions extends Configuracion {
                 registroUsuarioExito();
                 break;
 
-            case "la vaquita":
-                inicioLaVaquita();
-                break;
-
             case "supermercado los montes":
                 inicioLosMontes();
                 break;
-
             case "Your Store":
                 inicioYourStore();
+                break;
+            case "LATAM":
+                inicioLatam();
+                break;
+
+            case "la vaquita":
+                inicioLaVaquita();
                 break;
 
             default:
@@ -298,29 +317,21 @@ public class StepDefinitions extends Configuracion {
         }
     }
 
-    /**
-     *
-     * Métodos Supermercado Los Montes
-     */
+/**
+ * Métodos Supermercado Los Montes
+ */
 
-    private static void clickIncioLosMontes() {
-        theActorInTheSpotlight().attemptsTo(
-                navegaAlInicioSesionLosMontes()
-        );
-    }
 
-    private static void inicioLosMontes() {
-        theActorInTheSpotlight().attemptsTo(
-                iniciarSesionLosMontes()
-                        .conElEmail("juanmanuelgofu@gmail.com")
-                        .yConLaContrasenna("Juan1997")
-        );
-    }
+private static void clickIncioLosMontes(){
+        theActorInTheSpotlight().attemptsTo(navegaAlInicioSesionLosMontes());
+        }
 
-    private static void assertionLosMontes() {
-        theActorInTheSpotlight().should(
-                seeThat(mensajeNombreLosMontes(), equalTo("Juan Manuel Gomez Fuentes"))
-        );
-    }
-}
+private static void inicioLosMontes(){
+        theActorInTheSpotlight().attemptsTo(iniciarSesionLosMontes().conElEmail("juanmanuelgofu@gmail.com").yConLaContrasenna("Juan1997"));
+        }
+
+private static void assertionLosMontes(){
+        theActorInTheSpotlight().should(seeThat(mensajeNombreLosMontes(),equalTo("Juan Manuel Gomez Fuentes")));
+        }
+        }
 
