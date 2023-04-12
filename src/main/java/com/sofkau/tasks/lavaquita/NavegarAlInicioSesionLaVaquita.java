@@ -1,10 +1,10 @@
-package com.sofkau.tasks;
+package com.sofkau.tasks.lavaquita;
 
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 
-import static com.sofkau.ui.PaginaInicioLaVaquita.BOTON_REGISTRO;
+import static com.sofkau.ui.lavaquita.PaginaInicioLaVaquita.BOTON_REGISTRO;
 
 public class NavegarAlInicioSesionLaVaquita implements Task {
 

@@ -3,7 +3,7 @@ package com.sofkau.questions;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-import static com.sofkau.ui.ConfirmacionInicioSesionLaVaquita.MENSAJE_INICIO;
+import static com.sofkau.ui.lavaquita.ConfirmacionInicioSesionLaVaquita.MENSAJE_INICIO;
 
 public class MensajeNombreLaVaquita implements Question<String> {
 

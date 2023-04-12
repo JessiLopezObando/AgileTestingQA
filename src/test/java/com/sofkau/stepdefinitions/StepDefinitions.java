@@ -6,13 +6,21 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import static com.sofkau.questions.MensajeColanta.mensajeColanta;
+
 
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
+
+
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
 
 import static com.sofkau.questions.MensajeNombreLaVaquita.mensajeNombreLaVaquita;
-import static com.sofkau.tasks.IniciarSesionLaVaquita.iniciarSesionLaVaquita;
-import static com.sofkau.tasks.NavegarAlInicioSesionLaVaquita.navegarAlInicioSesionLaVaquita;
+import static com.sofkau.tasks.lavaquita.IniciarSesionLaVaquita.iniciarSesionLaVaquita;
+import static com.sofkau.tasks.lavaquita.NavegarAlInicioSesionLaVaquita.navegarAlInicioSesionLaVaquita;
+
+import static com.sofkau.tasks.colanta.IniciarSesionColanta.iniciarSesionColanta;
+
+import static com.sofkau.tasks.colanta.NavegarAlInicioSesionColanta.navegarAlInicioSesionColanta;
 
 import static com.sofkau.questions.MensajeNombreExito.mensajeBienvenidaExito;
 import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
@@ -90,17 +98,22 @@ public class StepDefinitions extends Configuracion {
                 assertionLaVaquita();
                 break;
 
+            case "pideColanta":
+                assertionColanta();
+                break;
+
             case "pagina exito":
                 assertionExito();
                 break;
+
             case "supermercado los montes":
                 assertionLosMontes();
                 break;
 
             case "Your Store":
                 assertionYourStore();
-
                 break;
+
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -110,6 +123,11 @@ public class StepDefinitions extends Configuracion {
     private static void assertionAutomation() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeNombre(), equalTo("Logged in as Jessica"))
+        );
+    }
+    private static void assertionColanta() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeColanta(), equalTo("HOLA, ROMINA"))
         );
     }
 
@@ -133,6 +151,7 @@ public class StepDefinitions extends Configuracion {
     }
 
 
+
     /**
      *
      *
@@ -144,6 +163,10 @@ public class StepDefinitions extends Configuracion {
         switch (pagina) {
             case "automation exercise":
                 clickInicioAutomation();
+                break;
+
+            case "pideColanta":
+                clickInicioColanta();
                 break;
 
             case "la vaquita":
@@ -160,8 +183,8 @@ public class StepDefinitions extends Configuracion {
 
             case "Your Store":
                 clickInicioYourStore();
-
                 break;
+
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -174,19 +197,24 @@ public class StepDefinitions extends Configuracion {
                 navegarAlRegistro()
         );
     }
+
+    private static void clickInicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                navegarAlInicioSesionColanta()
+        );
+    }
+
     private static void clickInicioSesionExito() {
         theActorInTheSpotlight().attemptsTo(
                 navegarAlRegistroPaginaExito()
         );
     }
 
-
     private static void clickInicioYourStore() {
         theActorInTheSpotlight().attemptsTo(
                 navegarInicioYourStore()
         );
     }
-
 
 
     //Metodo que contiene las credenciales de automation
@@ -205,6 +233,13 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
+    private static void inicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionColanta()
+                        .conElEmail("rominamene2023@gmail.com")
+                        .yConLaContrasenna("Lupita01")
+        );
+    }
 
     private static void inicioLaVaquita() {
         theActorInTheSpotlight().attemptsTo(
@@ -214,15 +249,12 @@ public class StepDefinitions extends Configuracion {
         );
     }
 
-
-
     private static void registroUsuarioExito() {
         theActorInTheSpotlight().attemptsTo(
                 iniciarSesionExito()
                         .conUsuario("ospina_88@hotmail.com")
-                        .conPassword("Emilia#2019"));
-
-
+                        .conPassword("Emilia#2019")
+        );
     }
 
     private static void inicioYourStore() {
@@ -230,24 +262,23 @@ public class StepDefinitions extends Configuracion {
                 iniciarSesionYourStore()
                         .conElUsuario("yeisonbuitrago1010@gmail.com")
                         .yConLaContrasenna("72qMXaw5rK29sB")
-
         );
     }
 
-
-
     //When - completa credenciales para iniciar sesion - General
-
-
     private static void completarCredenciales(String pagina) {
         switch (pagina) {
             case "automation exercise":
                 inicioAutomation();
                 break;
+
+            case "pideColanta":
+                inicioColanta();
+                break;
+
             case "pagina exito":
                 registroUsuarioExito();
                 break;
-
 
             case "la vaquita":
                 inicioLaVaquita();
@@ -259,23 +290,18 @@ public class StepDefinitions extends Configuracion {
 
             case "Your Store":
                 inicioYourStore();
-
                 break;
+
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
         }
     }
 
-
-
-
     /**
      *
      * Métodos Supermercado Los Montes
      */
-
-
 
     private static void clickIncioLosMontes() {
         theActorInTheSpotlight().attemptsTo(
@@ -290,11 +316,11 @@ public class StepDefinitions extends Configuracion {
                         .yConLaContrasenna("Juan1997")
         );
     }
+
     private static void assertionLosMontes() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeNombreLosMontes(), equalTo("Juan Manuel Gomez Fuentes"))
         );
     }
-
 }
 
