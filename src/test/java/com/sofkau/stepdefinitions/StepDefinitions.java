@@ -6,9 +6,21 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
+import static com.sofkau.questions.MensajeColanta.mensajeColanta;
+
 
 import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
+
+
+
+import static com.sofkau.questions.MensajeColanta.mensajeColanta;
 import static com.sofkau.questions.MensajeNombre.mensajeNombre;
+
+import static com.sofkau.tasks.colanta.IniciarSesionColanta.iniciarSesionColanta;
+
+import static com.sofkau.tasks.colanta.NavegarAlInicioSesionColanta.navegarAlInicioSesionColanta;
+
+import static com.sofkau.questions.MensajeInicioYourStore.mensajeInicioYourStore;
 import static com.sofkau.questions.MensajeNombreExito.mensajeBienvenidaExito;
 import static com.sofkau.questions.MensajeNombreLosMontes.mensajeNombreLosMontes;
 import static com.sofkau.tasks.automation.IniciarSesionAutomation.iniciarSesion;
@@ -81,6 +93,10 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 assertionAutomation();
                 break;
+            case "pideColanta":
+                assertionColanta();
+                break;
+
             case "pagina exito":
                 assertionExito();
                 break;
@@ -90,7 +106,10 @@ public class StepDefinitions extends Configuracion {
 
             case "Your Store":
                 assertionYourStore();
+
                 break;
+
+
             default:
                 LOGGER.info("Ingrese el nombre de la pagina correcta");
                 Assertions.fail();
@@ -100,6 +119,11 @@ public class StepDefinitions extends Configuracion {
     private static void assertionAutomation() {
         theActorInTheSpotlight().should(
                 seeThat(mensajeNombre(), equalTo("Logged in as Jessica"))
+        );
+    }
+    private static void assertionColanta() {
+        theActorInTheSpotlight().should(
+                seeThat(mensajeColanta(), equalTo("HOLA, ROMINA"))
         );
     }
 
@@ -117,6 +141,7 @@ public class StepDefinitions extends Configuracion {
     }
 
 
+
     /**
      *
      *
@@ -128,6 +153,8 @@ public class StepDefinitions extends Configuracion {
         switch (pagina) {
             case "automation exercise":
                 clickInicioAutomation();
+            case "pideColanta":
+                clickInicioColanta();
                 break;
             case "pagina exito":
                 clickInicioSesionExito();
@@ -153,6 +180,13 @@ public class StepDefinitions extends Configuracion {
                 navegarAlRegistro()
         );
     }
+
+    private static void clickInicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                navegarAlInicioSesionColanta()
+        );
+    }
+
     private static void clickInicioSesionExito() {
         theActorInTheSpotlight().attemptsTo(
                 navegarAlRegistroPaginaExito()
@@ -168,13 +202,26 @@ public class StepDefinitions extends Configuracion {
 
 
 
+
+
+
+    //Metodo que contiene las credenciales de Automation
+
     //Metodo que contiene las credenciales de automation
+
 
     private static void inicioAutomation() {
         theActorInTheSpotlight().attemptsTo(
                 iniciarSesion()
                         .conElUsuario("jessica@gmail.com")
                         .yConLaContrasenna("123456")
+        );
+    }
+    private static void inicioColanta() {
+        theActorInTheSpotlight().attemptsTo(
+                iniciarSesionColanta()
+                        .conElEmail("rominamene2023@gmail.com")
+                        .yConLaContrasenna("Lupita01")
         );
     }
 
@@ -206,8 +253,14 @@ public class StepDefinitions extends Configuracion {
             case "automation exercise":
                 inicioAutomation();
                 break;
+
+            case "pideColanta":
+                inicioColanta();
+                break;
+
             case "pagina exito":
                 registroUsuarioExito();
+
                 break;
 
             case "supermercado los montes":
